@@ -33,7 +33,8 @@
 				<div class = "navbar-brand brand-center visible-xs"><a href="#"><img src="./images/logo.png" class="navbar-image"></a></div>
 			</div>
 		</nav>
-		<div id="cbox" style="display:none">
+		<div id="cbox" style="display:none;text-align:center">
+			<img src="./images/ehlogo.jpg" style="height:150px;"></img>
 			<div class="form-group" id="pwdgroup">
 				<div class="input-group">
 					<div class="input-group-addon">

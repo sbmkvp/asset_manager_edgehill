@@ -76,11 +76,11 @@ input.wait {
 	margin-left: -15px;
 	margin-right: -15px;
 	padding: 10px 15px;
-	 border-top: 0px solid transparent; 
-	 border-bottom: 0px solid transparent; 
-	 box-shadow: none; 
-	 margin-top: 0px; 
-	 margin-bottom: 0px; 
+	border-top: 0px solid transparent; 
+	border-bottom: 0px solid transparent; 
+	box-shadow: none; 
+	margin-top: 0px; 
+	margin-bottom: 0px; 
 }
 
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
