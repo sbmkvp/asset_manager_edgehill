@@ -1,0 +1,147 @@
+html {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	background-color: #eee;
+}
+
+.container {
+	height:100%;
+}
+
+#overallContainer {
+	height:100%;
+	box-shadow: 0px 0px 1px 0px;
+}
+
+#contactList {
+	height: 100%;
+	padding: 0px;
+	padding-top: 50px;
+	padding-bottom: 150px;
+	overflow-x:hidden;
+	overflow-y:scroll;
+	background-color: #fff;ß
+}
+
+#detailedView {
+	height:100%;
+	box-shadow: -1px 0px 5px -1px;
+	background-color: #fff;
+	padding-top: 50px;
+	overflow-x:hidden;
+	overflow-y:scroll;
+}
+
+.navbar {
+	margin-bottom: 0px;	
+	border: 0px solid transparent;
+	box-shadow: 0px 0px 10px 1px #555;
+}
+
+.brand-center {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	float: none;
+	text-align: center;
+}
+
+.navbar-inverse {
+	background-color: #222222;
+}
+
+.navbar-inverse .navbar-brand {
+	color: #fff;
+}
+
+.navbar-image {
+	height: 28px;
+	padding-left: 5px;
+	padding-right: 15px;
+	float: left;
+}
+
+.contact {
+	padding: 15px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #aaa;
+	vertical-align: middle;
+	font-size: small;
+	cursor: pointer;
+}
+
+.contact:hover { 
+    background-color: rgb(255,255,191);
+}
+
+#photo {
+	background: #555;
+	height: 200px;
+	width: 200px;
+	border-radius: 10px;
+	margin: auto;
+	margin-top: 40px;
+	margin-bottom: 25px;
+	background-size: cover;
+	background-repeat: none;
+}
+
+#photom {
+	background: #555;
+	height: 100px;
+	width: 100px;
+	border-radius: 10px;
+	margin: auto;
+	margin-top: 40px;
+	margin-bottom: 25px;
+	background-size: cover;
+	background-repeat: none;	
+}
+
+#fname, #lname, #fnamem, #lnamem {
+	text-align: center;
+	font-size: xx-large;
+	font-weight: 300;
+}
+
+#fnamem, #lnamem {
+	text-align: center;
+	font-size: xx-large;
+	font-weight: 300;
+}
+
+#title, #org, #titlem, #orgm {
+	text-align: center;
+	font-size: large;
+	font-weight: 100;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+	vertical-align: middle;
+	padding: 15px;
+}
+
+.navbar-form {
+	margin-left: -15px;
+	margin-right: -15px;
+	padding: 10px 15px;
+	 border-top: 0px solid transparent; 
+	 border-bottom: 0px solid transparent; 
+	 box-shadow: none; 
+	 margin-top: 0px; 
+	 margin-bottom: 0px; 
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+	border: 0px;
+}
+
+.navbar-inverse .navbar-toggle {
+	border:0px;
+}
