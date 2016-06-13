@@ -5,7 +5,6 @@
 		exit();
 	}
 ?>
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -45,6 +44,8 @@
 				<div class="col-md-2"></div>
 			</div>
 		</div>
-
+		<div class="container" style="text-align:center">
+			<button type="button" id="logout" class="btn btn-warning" style="margin-top:20px" onclick="$.post('./scripts/logout.php',function(){window.location.reload();})">Logout</button>
+		</div>
 	</body>
 </html>
