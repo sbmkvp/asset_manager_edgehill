@@ -15,7 +15,8 @@ $(document).ready(function(){
 				$('#inf-wrap').addClass('alert-warning');
 				$('#inf-text').html('The password seems to be wrong. Please try again. If you have forgotten your password or do not have one contact admin at <a href="mailto:email@gmail.com">email@gmail.com</a> or <a href="tel:+447547979373">+44 75479 79373</a>');
 				$('#password').removeClass('wait');
-				$('#goButton').show();				
+				$('#goButton').show();
+				console.log(response);		
 			}
 		});
 	});
@@ -35,7 +36,8 @@ $(document).ready(function(){
 					$('#inf-wrap').addClass('alert-warning');
 					$('#inf-text').html('The password seems to be wrong. Please try again. If you have forgotten your password or do not have one contact admin at <a href="mailto:email@gmail.com">email@gmail.com</a> or <a href="tel:+447547979373">+44 75479 79373</a>');
 					$('#password').removeClass('wait');
-					$('#goButton').show();				
+					$('#goButton').show();		
+					console.log(response);
 				}
 			});
 		}
