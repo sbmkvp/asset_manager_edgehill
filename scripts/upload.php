@@ -22,7 +22,7 @@
 						$res = $zip->open('../data/photos.zip');
 						$zip->extractTo('../photos/');
   						$zip->close();
-  						unlink('../data/photos.zip')
+  						unlink('../data/photos.zip');
 						echo 'success';	
 					}
 

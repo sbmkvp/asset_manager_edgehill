@@ -15,7 +15,7 @@ $(document).ready(function(){
 				processData: false,
 				contentType: false,
 				cache:false,
-				success: function(e, textStatus, jqXHR) {  },
+				success: function(e, textStatus, jqXHR) { $('#cbox').append('<div class="alert alert-success" style="margin-top:10px;display:none" role="alert">Done!</div>'); $('.alert').fadeIn(500) ;setTimeout(function(){$('.alert').fadeOut(500,function(){$('.alert').remove()});},2000); },
 				error: function(jqXHR, textStatus, errorThrown){  }
 			});
         }
@@ -35,7 +35,7 @@ $(document).ready(function(){
 				processData: false,
 				contentType: false,
 				cache:false,
-				success: function(e, textStatus, jqXHR) {  },
+				success: function(e, textStatus, jqXHR) { $('#cbox').append('<div class="alert alert-success" style="margin-top:10px;display:none" role="alert">Done!</div>'); $('.alert').fadeIn(500) ;setTimeout(function(){$('.alert').fadeOut(500,function(){$('.alert').remove()});},2000); },
 				error: function(jqXHR, textStatus, errorThrown){  }
 			});
         }
@@ -55,7 +55,7 @@ $(document).ready(function(){
 				processData: false,
 				contentType: false,
 				cache:false,
-				success: function(e, textStatus, jqXHR) {  },
+				success: function(e, textStatus, jqXHR) { $('#cbox').append('<div class="alert alert-success" style="margin-top:10px;display:none" role="alert">Done!</div>'); $('.alert').fadeIn(500) ;setTimeout(function(){$('.alert').fadeOut(500,function(){$('.alert').remove()});},2000); },
 				error: function(jqXHR, textStatus, errorThrown){  }
 			});
         }
@@ -75,7 +75,7 @@ $(document).ready(function(){
 				processData: false,
 				contentType: false,
 				cache:false,
-				success: function(e, textStatus, jqXHR) { },
+				success: function(e, textStatus, jqXHR) { $('#cbox').append('<div class="alert alert-success" style="margin-top:10px;display:none" role="alert">Done!</div>'); $('.alert').fadeIn(500) ;setTimeout(function(){$('.alert').fadeOut(500,function(){$('.alert').remove()});},2000); },
 				error: function(jqXHR, textStatus, errorThrown){  }
 			});
         }

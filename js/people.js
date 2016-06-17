@@ -2,7 +2,7 @@ $(document).ready(function(){
 	a = new contactList();
 	a.getContacts();
 
-	$('#search').on('keyup paste propertychange',function(){
+	$('#search').on('keyup paste propertychange',function(e){
 		var term = $(this).val().toLowerCase();
 		for ( i in a.contacts) {
 			var name = a.contacts[i].details.firstname.toLowerCase()+' '+a.contacts[i].details.lastname.toLowerCase();
@@ -18,7 +18,7 @@ $(document).ready(function(){
 		}
 	});
 
-	if(a.contacts!=undefined) { selectContact(a.contacts[0].email) };
+	if(a.contacts[0]!=undefined) { selectContact(a.contacts[0].id) };
 });
 
 // other colors, rgb(166, 206, 227), rgb(178, 223, 138), rgb(227, 26, 28), rgb(253, 191, 111), rgb(255, 127, 0), rgb(152, 78, 163), rgb(179, 179, 179), rgb(251, 154, 153), rgb(202, 178, 214), rgb(247, 129, 191)
@@ -116,7 +116,6 @@ function contactList () {
 }
 
 function selectContact(id) {
-	console.log(id);
 	for(i in a.contacts){
 		if(a.contacts[i].id==id) {
 			d = a.contacts[i].details;

@@ -19,6 +19,8 @@
 		<meta name="mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name = "viewport" content = "width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,user-scalable=0">
+		<link rel="icon" type="image/png" href="./images/favicon.png">
+		<link rel="apple-touch-icon-precomposed" href="./images/favicon.png"/>
 		<link href='http://fonts.googleapis.com/css?family=Roboto:300,400' rel='stylesheet' type='text/css'>
 		<link rel = "stylesheet" type = "text/css" href = "./lib/bootstrap.css">
 		<link rel = "stylesheet" type = "text/css" href = "./css/index.css">

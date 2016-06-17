@@ -19,7 +19,6 @@
 	<link rel = "stylesheet" type = "text/css" href = "./css/people.css">
 	<script type = "text/javascript" src = "./lib/jquery.js"></script>
 	<script type = "text/javascript" src = "./lib/bootstrap.js"></script>
-	<script type = "text/javascript" src = "./data/people.js"></script>
 	<script type = "text/javascript" src = "./js/people.js"></script>
 <body>
 	<nav class = "navbar navbar-inverse navbar-fixed-top" role = "navigation">
@@ -29,7 +28,7 @@
 			<div class = "navbar-brand brand-center visible-xs"><a href="landing.php"><img src="./images/logo.png" class="navbar-image"></a><span style="line-height:22px">People</span></div>
 		</div>
 		<div class="collapse navbar-collapse">
-			<form class="navbar-form navbar-right" role="search"><div class="form-group"><input id="search" type="text" class="form-control" placeholder="Search" style="margin-right:10px;"></div></form>
+			<div class="navbar-form navbar-right"><div class="form-group"><input id="search" type="text" class="form-control" placeholder="Search" style="margin-right:10px;"></div></div>
 		</div>
 	</nav>
 	<div class="container">
