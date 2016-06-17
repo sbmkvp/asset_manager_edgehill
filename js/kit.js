@@ -2,14 +2,15 @@ $(document).ready(function(){
 	a = new contactList();
 	a.getContacts();
 
-	$('#search').on('keyup paste propertychange',function(){
+	$('#search').on('change keyup paste propertychange',function(){
+		if(e.keyCode==13) {
+			$('.navbar-toggle').click()
+		}
 		var term = $(this).val().toLowerCase();
 		for ( i in a.contacts) {
-			var name = a.contacts[i].details.firstname.toLowerCase()+' '+a.contacts[i].details.lastname.toLowerCase();
-			name = name==undefined ? '' : name;
-			var title = a.contacts[i].details.title==undefined ? '' : a.contacts[i].details.title.toLowerCase();
-			var org = a.contacts[i].details.organisation==undefined ? '' : a.contacts[i].details.organisation.toLowerCase();
-			if(name.indexOf(term)>-1 || title===term || org===term ) {
+			var name = a.contacts[i].details[1]==undefined ? '' : a.contacts[i].details[1].toLowerCase();
+			var category = a.contacts[i].details[2]==undefined ? '' : a.contacts[i].details[2].toLowerCase();
+			if(name.indexOf(term)>-1 || category===term ) {
 				a.contacts[i].listView.show();
 				selectContact(a.contacts[i].id);
 			} else {
@@ -19,6 +20,7 @@ $(document).ready(function(){
 	});
 
 	if(a.contacts[0]!=undefined) { selectContact(a.contacts[0].id) };
+	$(".collapse").append($('<datalist id="dlist"></datalist>'));
 });
 
 var colorScheme = {
@@ -87,8 +89,10 @@ function contactList () {
 			    success: function (data) {
 			    	data = CSVToArray(data);
 					for (i in data) {
-						var c = new contact (data[i][0],data[i]);
-						list.addContact(c);
+						if( i!=0 ) {
+							var c = new contact (data[i][0],data[i]);
+							list.addContact(c);
+						}
 					}
 					selectContact(list.contacts[0].id);
 					$('#contactList').append('<div style="width:80%;font-size:x-small;color:#888;margin:auto;margin-top:25px;text-align:center">If there are any inaccurate or outdated information in this database please contact <a href="mailto:edgehillventure@gmail.com">edgehillventure@gmail.com</a><br><button type="button" id="logout" class="btn btn-warning" style="margin-top:20px">Logout</button></div>');
@@ -97,6 +101,12 @@ function contactList () {
 							window.location.reload();
 						});
 					})
+					datalist = [];
+					for(i in list.contacts) { 
+						if (datalist.indexOf(list.contacts[i].details[2])<0) { datalist.push(list.contacts[i].details[2]); } 
+						if (datalist.indexOf(list.contacts[i].details[1])<0) { datalist.push(list.contacts[i].details[1]); }
+					}
+					for(i in datalist) { $('datalist').append($('<option value="'+datalist[i]+'">')); }
 			    }
 			});
 		}

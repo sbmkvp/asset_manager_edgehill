@@ -30,7 +30,7 @@
 			<div class = "navbar-brand brand-center visible-xs"><a href="landing.php"><img src="./images/logo.png" class="navbar-image"></a><span style="line-height:22px">People</span></div>
 		</div>
 		<div class="collapse navbar-collapse">
-			<div class="navbar-form navbar-right"><div class="form-group"><input id="search" type="text" class="form-control" placeholder="Search" style="margin-right:10px;"></div></div>
+			<div class="navbar-form navbar-right"><div class="form-group"><input id="search" type="text" list = "dlist" class="form-control" placeholder="Search" style="margin-right:10px;"></div></div>
 		</div>
 	</nav>
 	<div class="container">
@@ -76,9 +76,9 @@
 					<div id="orgm"></div>
 					<table class="table" style="margin-top:10px;">
 						<tbody>
-							<tr><td style="text-align:right"><span class="btn btn-default"><span class="glyphicon glyphicon-envelope"></span></span></td><td id="emailm"></td></tr>
-							<tr><td style="text-align:right"><span class="btn btn-default"><span class="glyphicon glyphicon-phone-alt"></span></span></td><td id="workm"></td></tr>
-							<tr><td style="text-align:right;border-bottom: 1px solid #ddd;"><span class="btn btn-default"><span class="glyphicon glyphicon-phone"></span></span></td><td style="border-bottom: 1px solid #ddd;" id="mobilem"></td></tr>
+							<tr><td style="text-align:right"><span class="btn btn-default">Email &nbsp<span class="glyphicon glyphicon-envelope"></span></span></td><td id="emailm"></td></tr>
+							<tr><td style="text-align:right"><span class="btn btn-default">Home &nbsp<span class="glyphicon glyphicon-phone-alt"></span></span></td><td id="workm"></td></tr>
+							<tr><td style="text-align:right;border-bottom: 1px solid #ddd;"><span class="btn btn-default">Mobile &nbsp<span class="glyphicon glyphicon-phone"></span></span></td><td style="border-bottom: 1px solid #ddd;" id="mobilem"></td></tr>
 						</tbody>
 					</table>
 				</div>

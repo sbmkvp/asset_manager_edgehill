@@ -2,26 +2,26 @@ $(document).ready(function(){
 	a = new contactList();
 	a.getContacts();
 
-	$('#search').on('keyup paste propertychange',function(e){
+	$('#search').on('change keyup paste propertychange',function(e){
+		if(e.keyCode==13) {
+			$('.navbar-toggle').click()
+		}
 		var term = $(this).val().toLowerCase();
 		for ( i in a.contacts) {
-			var name = a.contacts[i].details.firstname.toLowerCase()+' '+a.contacts[i].details.lastname.toLowerCase();
-			name = name==undefined ? '' : name;
-			var title = a.contacts[i].details.title==undefined ? '' : a.contacts[i].details.title.toLowerCase();
-			var org = a.contacts[i].details.organisation==undefined ? '' : a.contacts[i].details.organisation.toLowerCase();
-			if(name.indexOf(term)>-1 || title===term || org===term ) {
+			var name = a.contacts[i].details[1].toLowerCase()+' '+a.contacts[i].details[2].toLowerCase();
+			var role = a.contacts[i].details[3]==undefined ? '' : a.contacts[i].details[3].toLowerCase();
+			var room = a.contacts[i].details[4]==undefined ? '' : a.contacts[i].details[4].toLowerCase();
+			if(name.indexOf(term)>-1 || role===term || room===term ) {
 				a.contacts[i].listView.show();
-				selectContact(a.contacts[i].email);
+				selectContact(a.contacts[i].id);
 			} else {
 				a.contacts[i].listView.hide();
 			}
 		}
 	});
-
 	if(a.contacts[0]!=undefined) { selectContact(a.contacts[0].id) };
+	$(".collapse").append($('<datalist id="dlist"></datalist>'));
 });
-
-// other colors, rgb(166, 206, 227), rgb(178, 223, 138), rgb(227, 26, 28), rgb(253, 191, 111), rgb(255, 127, 0), rgb(152, 78, 163), rgb(179, 179, 179), rgb(251, 154, 153), rgb(202, 178, 214), rgb(247, 129, 191)
 
 var colorScheme = {
 	"Room Group Leader" : "rgb(31, 120, 180)",
@@ -31,55 +31,38 @@ var colorScheme = {
 }
 
 function contact (id,details) {
-
 	var listView = $('<div>');
 	listView.addClass('contact');
 	return {
 		'id' : id,
-		'email' : details.email,
 		'details' : details,
 		'listView' : listView,
-		getDetail : function (key) {
-			return this.details[key];
-		},
-		addDetail : function (object) {
-			var keys = Object.keys(object);
-			for (i in keys) {
-				this.details[keys[i]] = object[keys[i]];
-			}
-		},
 		draw : function () {
 			this.listView.empty();
-			this.listView.append(details.firstname+' '+details.lastname);
+			this.listView.append(details[1]+' '+details[2]);
 			var orgLabel = $('<span>');
 			orgLabel.addClass('badge');
 			orgLabel.addClass('pull-right');
 			orgLabel.css('font-size','smaller');
 			orgLabel.css('font-weight','400');
-			if(colorScheme[details.title]!=undefined) {
-				orgLabel.css('background-color',colorScheme[details.title]);
+			if(colorScheme[details[3]]!=undefined) {
+				orgLabel.css('background-color',colorScheme[details[3]]);
 			}
-			orgLabel.append(details.title.slice(0,20));
+			orgLabel.append(details[3]);
 			this.listView.append(orgLabel);
-			this.listView.attr('email',this.email);
-			this.listView.attr('idd',this.id);
+			this.listView.attr('id',this.id);
 			this.listView.on('click touchend',function(){
-				selectContact($(this).attr('idd'));
+				selectContact($(this).attr('id'));
 				if($('#detailedView').css('display')=='none') {
 					$('#detailedModal').modal('show');
 				}
 			});
-		},
-		setDetail: function(key,value) {
-			this.details[key] = value;
-			this.draw();
 		}
 	}
 }
 
 function contactList () {
 	var contacts = [];
-
 	return {
 		'contacts' : contacts,
 		'view' : $('#contactList'),
@@ -91,15 +74,19 @@ function contactList () {
 		getContacts : function () {
 			var list = this;
 			$.ajax({
-			    url: './data/people.json',
-			    dataType: 'json',
+			    url: './data/people.csv',
+			    dataType: 'text',
 			    cache: false,
 			    beforeSend: function () { },
-			    error: function (jqXHR, textStatus, errorThrown) { },
+			    error: function (jqXHR, textStatus, errorThrown) { console.log(errorThrown); },
 			    success: function (data) {
+			    	data = CSVToArray(data);
+			    	console.log(data)
 					for (i in data) {
-						var c = new contact (data[i].id,data[i]);
-						list.addContact(c);
+						if(i>0) {
+							var c = new contact (data[i][0],data[i]);
+							list.addContact(c);
+						}
 					}
 					selectContact(list.contacts[0].id);
 					$('#contactList').append('<div style="width:80%;font-size:x-small;color:#888;margin:auto;margin-top:25px;text-align:center">If there are any inaccurate or outdated information in this database please contact <a href="mailto:edgehillventure@gmail.com">edgehillventure@gmail.com</a><br><button type="button" id="logout" class="btn btn-warning" style="margin-top:20px">Logout</button></div>');
@@ -108,8 +95,14 @@ function contactList () {
 							window.location.reload();
 						});
 					})
-			    },
-			    complete: function () { }
+					datalist = [];
+					for(i in list.contacts) { 
+						if (datalist.indexOf(list.contacts[i].details[3])<0) { datalist.push(list.contacts[i].details[3]); } 
+						if (datalist.indexOf(list.contacts[i].details[2])<0) { datalist.push(list.contacts[i].details[2]); } 
+						if (datalist.indexOf(list.contacts[i].details[1])<0) { datalist.push(list.contacts[i].details[1]); }
+					}
+					for(i in datalist) { $('datalist').append($('<option value="'+datalist[i]+'">')); }
+			    }
 			});
 		}
 	}
@@ -119,47 +112,49 @@ function selectContact(id) {
 	for(i in a.contacts){
 		if(a.contacts[i].id==id) {
 			d = a.contacts[i].details;
-			d.email = a.contacts[i].email;
 		}
 	}
 
 	$('#photo').css('background-image','url(./photos/people/'+id+'.jpg)');
-	$('#fname').text(d.firstname);
-	$('#lname').text(d.lastname);
-	$('#title').text(d.title!=undefined?d.title:"");
-	$('#org').text(d.organisation!=undefined?d.organisation:"");
-	$('#email').html('<a href="mailto:'+d.email+'">'+d.email+'</a>');
-	$('#work').html(d.work!=undefined?'<a href="tel:'+d.work+'">'+d.work+'</a>':"");
-	$('#mobile').html(d.mobile!=undefined?'<a href="tel:'+d.mobile+'">'+d.mobile+'</a>':"")
+	$('#fname').text(d[1]);
+	$('#lname').text(d[2]);
+	$('#title').text(d[3]);
+	$('#org').text(d[4]);
+	$('#email').html('<a href="mailto:'+d[7]+'">'+d[7]+'</a>');
+	$('#work').html('<a href="tel:'+d[5]+'">'+d[5]+'</a>');
+	$('#mobile').html('<a href="tel:'+d[6]+'">'+d[6]+'</a>');
 
 	$('#photom').css('background-image','url(./photos/people/'+id+'.jpg)');
-	$('#fnamem').text(d.firstname);
-	$('#lnamem').text(d.lastname);
-	$('#titlem').text(d.title!=undefined?d.title:"");
-	$('#orgm').text(d.organisation!=undefined?d.organisation:"");
-	$('#emailm').html('<a href="mailto:'+d.email+'">'+d.email+'</a>');
-	$('#workm').html(d.work!=undefined?'<a href="tel:'+d.work+'">'+d.work+'</a>':"");
-	$('#mobilem').html(d.mobile!=undefined?'<a href="tel:'+d.mobile+'">'+d.mobile+'</a>':"")
+	$('#fnamem').text(d[1]);
+	$('#lnamem').text(d[2]);
+	$('#titlem').text(d[3]);
+	$('#orgm').text(d[4]);
+	$('#emailm').html('<a href="mailto:'+d[7]+'">'+d[7]+'</a>');
+	$('#workm').html('<a href="tel:'+d[5]+'">'+d[5]+'</a>');
+	$('#mobilem').html('<a href="tel:'+d[6]+'">'+d[6]+'</a>')
 
 }
 
-function csvJSON(csv){
-
-	var lines=csv.split("\n");
-	var result = [];
-	var headers=lines[0].split(",");
-	for(var i=1;i<lines.length;i++){
-		var obj = {};
-		var currentline=lines[i].split(",");
-		for(var j=0;j<headers.length;j++){
-			obj[headers[j]] = currentline[j];
+function CSVToArray( strData, strDelimiter ){
+	strDelimiter = (strDelimiter || ",");
+	var objPattern = new RegExp( ( "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" + "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" + "([^\\" + strDelimiter + "\\r\\n]*))" ), "gi" );
+	var arrData = [[]];
+	var arrMatches = null;
+	while ( arrMatches = objPattern.exec( strData ) ){
+		var strMatchedDelimiter = arrMatches[ 1 ];
+		if ( strMatchedDelimiter.length && strMatchedDelimiter !== strDelimiter ) {
+			arrData.push( [] );
 		}
-		result.push(obj);
+		var strMatchedValue;
+		if (arrMatches[ 2 ]){
+			strMatchedValue = arrMatches[ 2 ].replace( new RegExp( "\"\"", "g" ), "\"" );
+		} else {
+			strMatchedValue = arrMatches[ 3 ];
+		}
+		arrData[ arrData.length - 1 ].push( strMatchedValue );
 	}
-	return result;
-
+	return( arrData );
 }
-
 
 
 
