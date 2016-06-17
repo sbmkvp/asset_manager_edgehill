@@ -59,6 +59,12 @@
 					fclose($file);
 					echo 'success';	
 				}
+				if($_REQUEST['mode']=='feed') {
+					$file = fopen('../data/feed','w');
+					fwrite($file,$_REQUEST['pass']);
+					fclose($file);
+					echo 'success';	
+				} else { echo 'failed'; }
 			}
 		} else {
 			echo("Authentication failed");

@@ -100,6 +100,22 @@ $(document).ready(function(){
 			});
         }
     });
+	$('#feed').on('keyup', function(event) {
+		console.log('start');
+		var feed = this;
+        if(event.keyCode == 13 && $(feed).val()!=''){
+			$.ajax({
+				url: './scripts/upload.php?mode=feed&pass='+this.value,
+				type: 'POST',
+				data: {},
+				processData: false,
+				contentType: false,
+				cache:false,
+				success: function(e, textStatus, jqXHR) { $(feed).attr('placeholder','Changed!').val(''); },
+				error: function(jqXHR, textStatus, errorThrown){ console.log(errorThrown); }
+			});
+        }
+    });
 	$('#up').on('keyup', function(event) {
 		var up = this;
         if(event.keyCode == 13 && $(up).val()!=''){
@@ -130,6 +146,22 @@ $(document).ready(function(){
 			});
         }
     });
+	$('#feedgo').on('click touchend', function(event) {
+		console.log('start');
+		var feed = this;
+        if($('#feed').val()!=''){
+			$.ajax({
+				url: './scripts/upload.php?mode=feed&pass='+$('#feed').val(),
+				type: 'POST',
+				data: {},
+				processData: false,
+				contentType: false,
+				cache:false,
+				success: function(e, textStatus, jqXHR) { $("#feed").attr('placeholder','Changed!').val(''); },
+				error: function(jqXHR, textStatus, errorThrown){ console.log(errorThrown); }
+			});
+        }
+    });    
 	$('#upgo').on('click touchend', function(event) {
 		var up = $('#up');
 		$.ajax({

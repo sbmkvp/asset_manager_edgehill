@@ -42,7 +42,7 @@
 			<div class="row" style="margin-top:10px">
 				<div class="col-xs-2"></div>
 				<a class="col-xs-4 bbox" href="prayer.php">Prayer</a>
-				<a class="col-xs-4 bbox" href="">Feedback</a>
+				<a class="col-xs-4 bbox" href="<?php echo(file_get_contents("data/feed")); ?>">Feedback</a>
 				<div class="col-xs-2"></div>
 			</div>
 		</div>
