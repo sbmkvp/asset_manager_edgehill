@@ -32,16 +32,16 @@
 		</div>
 		<div class="container">
 			<div class="row" style="margin-top:20px">
-				<div class="col-md-2"></div>
+				<div class="col-xs-2"></div>
 				<a class="col-xs-4 bbox" href="people.php">People</a>
 				<a class="col-xs-4 bbox" href="kit.php">Kit</a>
-				<div class="col-md-2"></div>
+				<div class="col-xs-2"></div>
 			</div>
 			<div class="row" style="margin-top:10px">
-				<div class="col-md-2"></div>
+				<div class="col-xs-2"></div>
 				<a class="col-xs-4 bbox" href="prayer.php">Prayer</a>
 				<a class="col-xs-4 bbox" href="">Feedback</a>
-				<div class="col-md-2"></div>
+				<div class="col-xs-2"></div>
 			</div>
 		</div>
 		<div class="container" style="text-align:center">

@@ -40,6 +40,7 @@
 				<div class="input-group">
 					<div class="input-group-addon">
 						<span class="glyphicon glyphicon-user"></span>
+						&nbsp&nbsp<span>People</span>&nbsp&nbsp
 					</div>
 					<input id="people" name="people" type="file" class="form-control">
 				</div>
@@ -48,6 +49,7 @@
 				<div class="input-group">
 					<div class="input-group-addon">
 						<span class="glyphicon glyphicon-tags"></span>
+						&nbsp&nbsp&nbsp<span>Kit</span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 					</div>
 					<input id="kit" name="kit" type="file" class="form-control">
 				</div>
@@ -56,6 +58,16 @@
 				<div class="input-group">
 					<div class="input-group-addon">
 						<span class="glyphicon glyphicon-heart"></span>
+						&nbsp&nbsp<span>Prayers</span>&nbsp
+					</div>
+					<input id="prayer" name="prayer" type="file" class="form-control">
+				</div>
+			</form>
+			<form class="form-group" id="photosgroup">
+				<div class="input-group">
+					<div class="input-group-addon">
+						<span class="glyphicon glyphicon-heart"></span>
+						&nbsp&nbsp<span>Photos</span>&nbsp&nbsp
 					</div>
 					<input id="prayer" name="prayer" type="file" class="form-control">
 				</div>
@@ -65,14 +77,15 @@
 					<span class="glyphicon glyphicon-lock"></span>
 				</div>
 				<input id="up" name="up" type="text" class="form-control" placeholder="user password">
+				<div id="upgo" class="input-group-addon" style="cursor:pointer"><span class="glyphicon glyphicon-chevron-right"></span></div>
 			</div>
-			<div class="input-group">
+			<div class="form-group input-group">
 				<div class="input-group-addon">
 					<span class="glyphicon glyphicon-cog"></span>
 				</div>
-				<input id="ap" name="ap" type="text" class="form-control" placeholder="user password">
+				<input id="ap" name="ap" type="text" class="form-control" placeholder="admin password">
+				<div id="apgo" class="input-group-addon" style="cursor:pointer"><span class="glyphicon glyphicon-chevron-right"></span></div>
 			</div>
-			<button type="button" id="logout" class="btn btn-warning" style="margin-top:10px" onclick="$.post('./scripts/logout.php',function(){window.location.reload();})">Logout</button>
 		</div>
 	</body>
 </html>
