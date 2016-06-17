@@ -19,6 +19,10 @@
 					}
 					if($_REQUEST['mode']=='photospeople') {
 						move_uploaded_file($_FILES["0"]["tmp_name"],"../data/photospeople.zip") or die('failed');
+						$files = glob('../photos/people/');
+						foreach($files as $file){
+							if(is_file($file)) { unlink($file); }
+						}
 						$zip = new ZipArchive;
 						$res = $zip->open('../data/photospeople.zip');
 						$zip->extractTo('../photos/people/');
@@ -28,6 +32,10 @@
 					}
 					if($_REQUEST['mode']=='photoskit') {
 						move_uploaded_file($_FILES["0"]["tmp_name"],"../data/photoskit.zip") or die('failed');
+						$files = glob('../photos/kit/');
+						foreach($files as $file){
+							if(is_file($file)) { unlink($file); }
+						}
 						$zip = new ZipArchive;
 						$res = $zip->open('../data/photoskit.zip');
 						$zip->extractTo('../photos/kit/');
