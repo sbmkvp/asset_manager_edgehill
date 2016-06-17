@@ -87,7 +87,7 @@
 				<div class="input-group-addon">
 					<span class="glyphicon glyphicon-lock"></span>
 				</div>
-				<input id=feed name="feed" type="text" class="form-control" placeholder="linkforfeedback">
+				<input id=feed name="feed" type="text" class="form-control" placeholder="link for feedback">
 				<div id="feedgo" class="input-group-addon" style="cursor:pointer"><span class="glyphicon glyphicon-chevron-right"></span></div>
 			</div>
 			<div class="form-group input-group">
