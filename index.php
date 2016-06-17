@@ -49,6 +49,7 @@
 			<div class="alert alert-info" id="inf-wrap" role="alert">
 				<div id="inf-text">Please enter your password above. If you have forgotten your password or do not have one contact admin at <a href="mailto:edgehillventure@gmail.com">edgehillventure@gmail.com</a> or <a href="tel:07400906360">07400906360</a></div>			
 			</div>
+			<script> (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-79522253-1', 'auto'); ga('send', 'pageview'); </script>
 		</div>
 	</body>
 </html>
