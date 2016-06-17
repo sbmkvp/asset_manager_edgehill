@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	ini_set("display_errors", "On");
 	if( isset($_SESSION['login']) ) {
 		if( $_SESSION['login']=="admin" ) {
 			if(isset($_FILES['0'])){
