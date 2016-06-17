@@ -51,7 +51,7 @@ function contact (id,details) {
 			orgLabel.append(details[3]);
 			this.listView.append(orgLabel);
 			this.listView.attr('id',this.id);
-			this.listView.on('click touchend',function(){
+			this.listView.on('click touch',function(){
 				selectContact($(this).attr('id'));
 				if($('#detailedView').css('display')=='none') {
 					$('#detailedModal').modal('show');
