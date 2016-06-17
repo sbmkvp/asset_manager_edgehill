@@ -2,7 +2,7 @@ $(document).ready(function(){
 	a = new contactList();
 	a.getContacts();
 
-	$('#search').on('change keyup paste propertychange',function(){
+	$('#search').on('change keyup paste propertychange',function(e){
 		if(e.keyCode==13) {
 			$('.navbar-toggle').click()
 		}
