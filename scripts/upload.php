@@ -5,15 +5,15 @@
 			if(isset($_FILES['0'])){
 				if($_FILES['0']['error']==0) {
 					if($_REQUEST['mode']=='people') {
-						move_uploaded_file($_FILES["0"]["tmp_name"],"../data/people.json") or die('failed');
+						move_uploaded_file($_FILES["0"]["tmp_name"],"../data/people.csv") or die('failed');
 						echo 'success';	
 					}
 					if($_REQUEST['mode']=='kit') {
-						move_uploaded_file($_FILES["0"]["tmp_name"],"../data/kit.json") or die('failed');
+						move_uploaded_file($_FILES["0"]["tmp_name"],"../data/kit.csv") or die('failed');
 						echo 'success';	
 					}
 					if($_REQUEST['mode']=='prayer') {
-						move_uploaded_file($_FILES["0"]["tmp_name"],"../data/prayer.json") or die('failed');
+						move_uploaded_file($_FILES["0"]["tmp_name"],"../data/prayer.csv") or die('failed');
 						echo 'success';	
 					}
 					if($_REQUEST['mode']=='photospeople') {

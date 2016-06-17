@@ -81,7 +81,6 @@ function contactList () {
 			    error: function (jqXHR, textStatus, errorThrown) { console.log(errorThrown); },
 			    success: function (data) {
 			    	data = CSVToArray(data);
-			    	console.log(data)
 					for (i in data) {
 						if(i>0) {
 							var c = new contact (data[i][0],data[i]);
