@@ -24,6 +24,8 @@
 		<link href='http://fonts.googleapis.com/css?family=Roboto:300,400' rel='stylesheet' type='text/css'>
 		<link rel = "stylesheet" type = "text/css" href = "./lib/bootstrap.css">
 		<link rel = "stylesheet" type = "text/css" href = "./css/admin.css">
+		<link rel="icon" type="image/png" href="./images/favicon.png">
+		<link rel="apple-touch-icon-precomposed" href="./images/favicon.png"/>
 		<script type = "text/javascript" src = "./lib/jquery.js"></script>
 		<script type = "text/javascript" src = "./lib/bootstrap.js"></script>
 		<script type = "text/javascript" src = "./js/admin.js"></script>
@@ -40,7 +42,7 @@
 				<div class="input-group">
 					<div class="input-group-addon">
 						<span class="glyphicon glyphicon-user"></span>
-						&nbsp&nbsp<span>People</span>&nbsp&nbsp
+						&nbsp&nbsp<span>People</span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 					</div>
 					<input id="people" name="people" type="file" class="form-control">
 				</div>
@@ -49,7 +51,7 @@
 				<div class="input-group">
 					<div class="input-group-addon">
 						<span class="glyphicon glyphicon-tags"></span>
-						&nbsp&nbsp&nbsp<span>Kit</span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						&nbsp&nbsp&nbsp<span>Kit</span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 					</div>
 					<input id="kit" name="kit" type="file" class="form-control">
 				</div>
@@ -58,18 +60,27 @@
 				<div class="input-group">
 					<div class="input-group-addon">
 						<span class="glyphicon glyphicon-heart"></span>
-						&nbsp&nbsp<span>Prayers</span>&nbsp
+						&nbsp&nbsp<span>Prayers</span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 					</div>
 					<input id="prayer" name="prayer" type="file" class="form-control">
 				</div>
 			</form>
-			<form class="form-group" id="photosgroup">
+			<form class="form-group" id="photospeogroup">
 				<div class="input-group">
 					<div class="input-group-addon">
-						<span class="glyphicon glyphicon-heart"></span>
-						&nbsp&nbsp<span>Photos</span>&nbsp&nbsp
+						<span class="glyphicon glyphicon-user"></span>
+						&nbsp&nbsp<span>Photos (p)</span>&nbsp
 					</div>
-					<input id="photos" name="photos" type="file" class="form-control">
+					<input id="photospeo" name="photospeo" type="file" class="form-control">
+				</div>
+			</form>
+			<form class="form-group" id="photoskitgroup">
+				<div class="input-group">
+					<div class="input-group-addon">
+						<span class="glyphicon glyphicon-tags"></span>
+						&nbsp&nbsp<span>Photos (k)</span>&nbsp
+					</div>
+					<input id="photoskit" name="photoskit" type="file" class="form-control">
 				</div>
 			</form>
 			<div class="form-group input-group">

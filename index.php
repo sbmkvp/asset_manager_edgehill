@@ -14,7 +14,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Edgehill</title>
+		<title>edgehill 2016</title>
 		<meta charset = "UTF-8">
 		<meta name="mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -47,7 +47,7 @@
 				</div>
 			</div>
 			<div class="alert alert-info" id="inf-wrap" role="alert">
-				<div id="inf-text">Please enter your password above. If you have forgotten your password or do not have one contact admin at <a href="mailto:email@gmail.com">email@gmail.com</a> or <a href="tel:+447547979373">+44 75479 79373</a></div>			
+				<div id="inf-text">Please enter your password above. If you have forgotten your password or do not have one contact admin at <a href="mailto:edgehillventure@gmail.com">edgehillventure@gmail.com</a> or <a href="tel:07400906360">07400906360</a></div>			
 			</div>
 		</div>
 	</body>

@@ -17,6 +17,8 @@
 		<link href='http://fonts.googleapis.com/css?family=Roboto:300,400' rel='stylesheet' type='text/css'>
 		<link rel = "stylesheet" type = "text/css" href = "./lib/bootstrap.css">
 		<link rel = "stylesheet" type = "text/css" href = "./css/prayer.css">
+		<link rel="icon" type="image/png" href="./images/favicon.png">
+		<link rel="apple-touch-icon-precomposed" href="./images/favicon.png"/>
 		<script type = "text/javascript" src = "./lib/jquery.js"></script>
 		<script type = "text/javascript" src = "./lib/bootstrap.js"></script>
 		<script type = "text/javascript" src = "./js/prayer.js"></script>

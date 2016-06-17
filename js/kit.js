@@ -11,17 +11,15 @@ $(document).ready(function(){
 			var org = a.contacts[i].details.organisation==undefined ? '' : a.contacts[i].details.organisation.toLowerCase();
 			if(name.indexOf(term)>-1 || title===term || org===term ) {
 				a.contacts[i].listView.show();
-				selectContact(a.contacts[i].email);
+				selectContact(a.contacts[i].id);
 			} else {
 				a.contacts[i].listView.hide();
 			}
 		}
 	});
 
-	if(a.contacts!=undefined) { selectContact(a.contacts[0].email) };
+	if(a.contacts[0]!=undefined) { selectContact(a.contacts[0].id) };
 });
-
-// other colors, rgb(179, 179, 179), rgb(247, 129, 191)
 
 var colorScheme = {
 	"Sports and Games"	: "rgb(031, 120, 180)",
@@ -38,47 +36,33 @@ var colorScheme = {
 	"Maintenance"		: "rgb(202, 178, 214)",
 }
 
-function contact (email,details) {
-
+function contact (id,details) {
 	var listView = $('<div>');
 	listView.addClass('contact');
 	return {
-		'email' : email,
+		'id' : id,
 		'details' : details,
 		'listView' : listView,
-		getDetail : function (key) {
-			return this.details[key];
-		},
-		addDetail : function (object) {
-			var keys = Object.keys(object);
-			for (i in keys) {
-				this.details[keys[i]] = object[keys[i]];
-			}
-		},
 		draw : function () {
 			this.listView.empty();
-			this.listView.append(details.firstname+' '+details.lastname);
+			this.listView.append(details[1]);
 			var orgLabel = $('<span>');
 			orgLabel.addClass('badge');
 			orgLabel.addClass('pull-right');
 			orgLabel.css('font-size','smaller');
 			orgLabel.css('font-weight','400');
-			if(colorScheme[details.title]!=undefined) {
-				orgLabel.css('background-color',colorScheme[details.title]);
+			if(colorScheme[details[2]]!=undefined) {
+				orgLabel.css('background-color',colorScheme[details[2]]);
 			}
-			orgLabel.append(details.title.slice(0,20));
+			orgLabel.append(details[2]);
 			this.listView.append(orgLabel);
-			this.listView.attr('email',this.email);
-			this.listView.on('click',function(){
-				selectContact($(this).attr('email'));
+			this.listView.attr('id',this.id);
+			this.listView.on('click touchend',function(){
+				selectContact($(this).attr('id'));
 				if($('#detailedView').css('display')=='none') {
 					$('#detailedModal').modal('show');
 				}
 			});
-		},
-		setDetail: function(key,value) {
-			this.details[key] = value;
-			this.draw();
 		}
 	}
 }
@@ -96,94 +80,73 @@ function contactList () {
 		},
 		getContacts : function () {			
 			var list = this;
-
 			$.ajax({
-			    url: './data/kit.json',
-			    dataType: 'json',
+			    url: './data/kit.csv',
+			    dataType: 'text',
 			    cache: false,
-
-			    beforeSend: function () {
-			        console.log("Loading");
-			    },
-
-			    error: function (jqXHR, textStatus, errorThrown) {
-			        console.log(jqXHR);
-			        console.log(textStatus);
-			        console.log(errorThrown);
-			    },
-
 			    success: function (data) {
-			        console.log('Success');
-			        console.log(data);
+			    	data = CSVToArray(data);
 					for (i in data) {
-						var c = new contact (data[i].email,data[i]);
+						var c = new contact (data[i][0],data[i]);
 						list.addContact(c);
 					}
-					selectContact(list.contacts[0].email);
-					$('#contactList').append('<div style="width:80%;font-size:x-small;color:#888;margin:auto;margin-top:25px;text-align:center">If there are any inaccurate or outdated information in this database please contact Ed Watson at <a href="mailto:email@org.com">email@org.com</a><br><button type="button" id="logout" class="btn btn-warning" style="margin-top:20px">Logout</button></div>');
+					selectContact(list.contacts[0].id);
+					$('#contactList').append('<div style="width:80%;font-size:x-small;color:#888;margin:auto;margin-top:25px;text-align:center">If there are any inaccurate or outdated information in this database please contact <a href="mailto:edgehillventure@gmail.com">edgehillventure@gmail.com</a><br><button type="button" id="logout" class="btn btn-warning" style="margin-top:20px">Logout</button></div>');
 					$('#logout').on('click touch',function(){
 						$.post('./scripts/logout.php',function(){
 							window.location.reload();
 						});
 					})
-			    },
-
-			    complete: function () {
-			        console.log('Finished all tasks');
 			    }
 			});
 		}
 	}
 }
 
-function selectContact(email) {
+function selectContact(id) {
 	for(i in a.contacts){
-		if(a.contacts[i].email==email) {
+		if(a.contacts[i].id==id) {
 			d = a.contacts[i].details;
-			d.email = a.contacts[i].email;
 		}
 	}
 
-	// $('#photo').css('background-image','url(../imageserver/people/'+email+'.png)');
-	$('#fname').text(d.firstname);
-	$('#lname').text(d.lastname);
-	$('#title').text(d.title!=undefined?d.title:"not-available");
-	$('#org').text(d.organisation!=undefined?d.organisation:"not-available");
-	$('#email').html(d.quant+'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp');
-	$('#work').html(d.work);
-	$('#mobile').html(d.mobile)
+	$('#photo').css('background-image','url(./photos/kit/'+id+'.jpg)');
+	$('#fname').text(d[1]);
+	$('#lname').text('');
+	$('#title').text(d[2]);
+	$('#org').text(d[3]);
+	$('#email').html(d[4]+'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp');
+	$('#work').html(d[5]);
+	$('#mobile').html(d[6])
 
-	// $('#photom').css('background-image','url(../imageserver/people/'+email+'.png)');
-	$('#fnamem').text(d.firstname);
-	$('#lnamem').text(d.lastname);
-	$('#titlem').text(d.title!=undefined?d.title:"not-available");
-	$('#orgm').text(d.organisation!=undefined?d.organisation:"not-available");
-	$('#emailm').html(d.quant+'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp');
-	$('#workm').html(d.work);
-	$('#mobilem').html(d.mobile)
+	$('#photom').css('background-image','url(./photos/kit/'+id+'.jpg)');
+	$('#fnamem').text(d[1]);
+	$('#lnamem').text('');
+	$('#titlem').text(d[2]);
+	$('#orgm').text(d[3]);
+	$('#emailm').html(d[4]+'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp');
+	$('#workm').html(d[5]);
+	$('#mobilem').html(d[6]);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function CSVToArray( strData, strDelimiter ){
+	strDelimiter = (strDelimiter || ",");
+	var objPattern = new RegExp( ( "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" + "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" + "([^\\" + strDelimiter + "\\r\\n]*))" ), "gi" );
+	var arrData = [[]];
+	var arrMatches = null;
+	while ( arrMatches = objPattern.exec( strData ) ){
+		var strMatchedDelimiter = arrMatches[ 1 ];
+		if ( strMatchedDelimiter.length && strMatchedDelimiter !== strDelimiter ) {
+			arrData.push( [] );
+		}
+		var strMatchedValue;
+		if (arrMatches[ 2 ]){
+			strMatchedValue = arrMatches[ 2 ].replace( new RegExp( "\"\"", "g" ), "\"" );
+		} else {
+			strMatchedValue = arrMatches[ 3 ];
+		}
+		arrData[ arrData.length - 1 ].push( strMatchedValue );
+	}
+	return( arrData );
+}
 

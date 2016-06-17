@@ -60,7 +60,7 @@ $(document).ready(function(){
 			});
         }
     });
-	$('#photos').on('change', function(event) {
+	$('#photospeo').on('change', function(event) {
         if (this.value!=='') {
         	files = event.target.files
 			data1 = new FormData();
@@ -69,7 +69,27 @@ $(document).ready(function(){
 				data1.append(key, value);
 			});
 			$.ajax({
-				url: './scripts/upload.php?mode=photos&files',
+				url: './scripts/upload.php?mode=photospeople&files',
+				type: 'POST',
+				data: data1,
+				processData: false,
+				contentType: false,
+				cache:false,
+				success: function(e, textStatus, jqXHR) { $('#cbox').append('<div class="alert alert-success" style="margin-top:10px;display:none" role="alert">Done!</div>'); $('.alert').fadeIn(500) ;setTimeout(function(){$('.alert').fadeOut(500,function(){$('.alert').remove()});},2000); },
+				error: function(jqXHR, textStatus, errorThrown){  }
+			});
+        }
+    });
+	$('#photoskit').on('change', function(event) {
+        if (this.value!=='') {
+        	files = event.target.files
+			data1 = new FormData();
+			$.each(files, function(key, value)
+			{
+				data1.append(key, value);
+			});
+			$.ajax({
+				url: './scripts/upload.php?mode=photoskit&files',
 				type: 'POST',
 				data: data1,
 				processData: false,
