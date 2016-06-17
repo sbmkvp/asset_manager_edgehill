@@ -101,7 +101,6 @@ $(document).ready(function(){
         }
     });
 	$('#feed').on('keyup', function(event) {
-		console.log('start');
 		var feed = this;
         if(event.keyCode == 13 && $(feed).val()!=''){
 			$.ajax({
@@ -112,6 +111,21 @@ $(document).ready(function(){
 				contentType: false,
 				cache:false,
 				success: function(e, textStatus, jqXHR) { $(feed).attr('placeholder','Changed!').val(''); },
+				error: function(jqXHR, textStatus, errorThrown){ console.log(errorThrown); }
+			});
+        }
+    });
+	$('#fa').on('keyup', function(event) {
+		var feed = this;
+        if(event.keyCode == 13 && $(fa).val()!=''){
+			$.ajax({
+				url: './scripts/upload.php?mode=fa&pass='+this.value,
+				type: 'POST',
+				data: {},
+				processData: false,
+				contentType: false,
+				cache:false,
+				success: function(e, textStatus, jqXHR) { $(fa).attr('placeholder','Changed!').val(''); },
 				error: function(jqXHR, textStatus, errorThrown){ console.log(errorThrown); }
 			});
         }
@@ -147,7 +161,6 @@ $(document).ready(function(){
         }
     });
 	$('#feedgo').on('click touchend', function(event) {
-		console.log('start');
 		var feed = this;
         if($('#feed').val()!=''){
 			$.ajax({
@@ -158,6 +171,21 @@ $(document).ready(function(){
 				contentType: false,
 				cache:false,
 				success: function(e, textStatus, jqXHR) { $("#feed").attr('placeholder','Changed!').val(''); },
+				error: function(jqXHR, textStatus, errorThrown){ console.log(errorThrown); }
+			});
+        }
+    });  
+	$('#fago').on('click touchend', function(event) {
+		var feed = this;
+        if($('#fa').val()!=''){
+			$.ajax({
+				url: './scripts/upload.php?mode=fa&pass='+$('#fa').val(),
+				type: 'POST',
+				data: {},
+				processData: false,
+				contentType: false,
+				cache:false,
+				success: function(e, textStatus, jqXHR) { $("#fa").attr('placeholder','Changed!').val(''); },
 				error: function(jqXHR, textStatus, errorThrown){ console.log(errorThrown); }
 			});
         }

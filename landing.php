@@ -45,9 +45,29 @@
 				<a class="col-xs-4 bbox" href="<?php echo(file_get_contents("data/feed")); ?>">Feedback</a>
 				<div class="col-xs-2"></div>
 			</div>
+			<div class="row" style="margin-top:10px">
+				<div class="col-xs-2"></div>
+				<div class="col-xs-8">
+					<ul class="list-group">
+						<li class="list-group-item" style="text-align:center"><b>First Aiders</b></li>
+						<?php
+							$string = '';
+							$text = file_get_contents("data/fa");
+							$people = explode(",",$text);
+							foreach($people as $person) {
+								$details = explode(":", $person);
+								$record = '<li class="list-group-item">'.$details[0].'<span class="pull-right"><a href="tel:'.$details[1].'">'.$details[1].'</a></span></li>';
+								$string = $string.$record;
+							}
+							echo $string;
+						?>
+					</ul>
+				</div>
+				<div class="col-xs-2"></div>
+			</div>
 		</div>
 		<div class="container" style="text-align:center">
-			<button type="button" id="logout" class="btn btn-warning" style="margin-top:20px" onclick="$.post('./scripts/logout.php',function(){window.location.reload();})">Logout</button>
+			<button type="button" id="logout" class="btn btn-warning" style="margin-top:5px" onclick="$.post('./scripts/logout.php',function(){window.location.reload();})">Logout</button>
 		</div>
 	</body>
 </html>

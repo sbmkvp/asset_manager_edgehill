@@ -64,7 +64,13 @@
 					fwrite($file,$_REQUEST['pass']);
 					fclose($file);
 					echo 'success';	
-				} else { echo 'failed'; }
+				}
+				if($_REQUEST['mode']=='fa') {
+					$file = fopen('../data/fa','w');
+					fwrite($file,$_REQUEST['pass']);
+					fclose($file);
+					echo 'success';
+				}
 			}
 		} else {
 			echo("Authentication failed");

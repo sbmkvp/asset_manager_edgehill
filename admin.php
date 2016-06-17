@@ -85,10 +85,17 @@
 			</form>
 			<div class="form-group input-group">
 				<div class="input-group-addon">
-					<span class="glyphicon glyphicon-lock"></span>
+					<span class="glyphicon glyphicon-link"></span>
 				</div>
 				<input id=feed name="feed" type="text" class="form-control" placeholder="link for feedback">
 				<div id="feedgo" class="input-group-addon" style="cursor:pointer"><span class="glyphicon glyphicon-chevron-right"></span></div>
+			</div>
+			<div class="form-group input-group">
+				<div class="input-group-addon">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</div>
+				<input id=fa name="fa" type="text" class="form-control" placeholder="First aiders [person:phone,person:phone...]">
+				<div id="fago" class="input-group-addon" style="cursor:pointer"><span class="glyphicon glyphicon-chevron-right"></span></div>
 			</div>
 			<div class="form-group input-group">
 				<div class="input-group-addon">
