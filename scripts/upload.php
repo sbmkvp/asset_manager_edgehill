@@ -16,6 +16,15 @@
 						move_uploaded_file($_FILES["0"]["tmp_name"],"../data/prayer.json") or die('failed');
 						echo 'success';	
 					}
+					if($_REQUEST['mode']=='photos') {
+						move_uploaded_file($_FILES["0"]["tmp_name"],"../data/photos.zip") or die('failed');
+						$zip = new ZipArchive;
+						$res = $zip->open('../data/photos.zip');
+						$zip->extractTo('../photos/');
+  						$zip->close();
+						echo 'success';	
+					}
+
 				}				
 			}
 			if(isset($_REQUEST['pass'])) {	

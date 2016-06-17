@@ -69,7 +69,7 @@
 						<span class="glyphicon glyphicon-heart"></span>
 						&nbsp&nbsp<span>Photos</span>&nbsp&nbsp
 					</div>
-					<input id="prayer" name="prayer" type="file" class="form-control">
+					<input id="photos" name="photos" type="file" class="form-control">
 				</div>
 			</form>
 			<div class="form-group input-group">
@@ -86,6 +86,7 @@
 				<input id="ap" name="ap" type="text" class="form-control" placeholder="admin password">
 				<div id="apgo" class="input-group-addon" style="cursor:pointer"><span class="glyphicon glyphicon-chevron-right"></span></div>
 			</div>
+			<button type="button" id="logout" class="btn btn-warning" style="margin-top:10px" onclick="$.post('./scripts/logout.php',function(){window.location.reload();})">Logout</button>
 		</div>
 	</body>
 </html>

@@ -15,16 +15,8 @@ $(document).ready(function(){
 				processData: false,
 				contentType: false,
 				cache:false,
-				success: function(e, textStatus, jqXHR) {
-					console.log(e);
-					console.log(textStatus);
-					console.log(jqXHR);
-				},
-				error: function(jqXHR, textStatus, errorThrown){
-					console.log(errorThrown);
-					console.log(textStatus);
-					console.log(jqXHR);
-				}
+				success: function(e, textStatus, jqXHR) {  },
+				error: function(jqXHR, textStatus, errorThrown){  }
 			});
         }
     });
@@ -43,16 +35,8 @@ $(document).ready(function(){
 				processData: false,
 				contentType: false,
 				cache:false,
-				success: function(e, textStatus, jqXHR) {
-					console.log(e);
-					console.log(textStatus);
-					console.log(jqXHR);
-				},
-				error: function(jqXHR, textStatus, errorThrown){
-					console.log(errorThrown);
-					console.log(textStatus);
-					console.log(jqXHR);
-				}
+				success: function(e, textStatus, jqXHR) {  },
+				error: function(jqXHR, textStatus, errorThrown){  }
 			});
         }
     });
@@ -71,16 +55,28 @@ $(document).ready(function(){
 				processData: false,
 				contentType: false,
 				cache:false,
-				success: function(e, textStatus, jqXHR) {
-					console.log(e);
-					console.log(textStatus);
-					console.log(jqXHR);
-				},
-				error: function(jqXHR, textStatus, errorThrown){
-					console.log(errorThrown);
-					console.log(textStatus);
-					console.log(jqXHR);
-				}
+				success: function(e, textStatus, jqXHR) {  },
+				error: function(jqXHR, textStatus, errorThrown){  }
+			});
+        }
+    });
+	$('#photos').on('change', function(event) {
+        if (this.value!=='') {
+        	files = event.target.files
+			data1 = new FormData();
+			$.each(files, function(key, value)
+			{
+				data1.append(key, value);
+			});
+			$.ajax({
+				url: './scripts/upload.php?mode=photos&files',
+				type: 'POST',
+				data: data1,
+				processData: false,
+				contentType: false,
+				cache:false,
+				success: function(e, textStatus, jqXHR) { },
+				error: function(jqXHR, textStatus, errorThrown){  }
 			});
         }
     });
@@ -117,7 +113,7 @@ $(document).ready(function(){
 	$('#upgo').on('click touchend', function(event) {
 		var up = $('#up');
 		$.ajax({
-			url: './scripts/upload.php?mode=up&pass='+this.value,
+			url: './scripts/upload.php?mode=up&pass='+up.val(),
 			type: 'POST',
 			data: {},
 			processData: false,
@@ -130,7 +126,7 @@ $(document).ready(function(){
 	$('#apgo').on('click touchend', function(event) {
 		var ap = $('#ap');
 		$.ajax({
-			url: './scripts/upload.php?mode=ap&pass='+this.value,
+			url: './scripts/upload.php?mode=ap&pass='+ap.val(),
 			type: 'POST',
 			data: {},
 			processData: false,
