@@ -121,7 +121,7 @@ function selectContact(id) {
 	$('#org').text(d[4]);
 	$('#email').html('<a href="mailto:'+d[7]+'">'+d[7]+'</a>');
 	$('#work').html('<a href="tel:'+d[5]+'">'+d[5]+'</a>');
-	$('#mobile').html('<a href="tel:'+d[6]+'">'+d[6]+'</a>');
+	$('#mobile').html('<a href="intent://send/'+d[6]+'#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end">'+d[6]+'</a>');
 
 	$('#photom').css('background-image','url(./photos/people/'+id+'.jpg)');
 	$('#fnamem').text(d[1]);
@@ -130,7 +130,7 @@ function selectContact(id) {
 	$('#orgm').text(d[4]);
 	$('#emailm').html('<a href="mailto:'+d[7]+'">'+d[7]+'</a>');
 	$('#workm').html('<a href="tel:'+d[5]+'">'+d[5]+'</a>');
-	$('#mobilem').html('<a href="tel:'+d[6]+'">'+d[6]+'</a>')
+	$('#mobilem').html('<a href="intent://send/'+d[6]+'#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end">'+d[6]+'</a>')
 
 }
 
