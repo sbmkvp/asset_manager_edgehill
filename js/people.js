@@ -83,6 +83,7 @@ function contactList () {
 			    	data = CSVToArray(data);
 					for (i in data) {
 						if(i>0) {
+							for(j in data[i]) { data[i][j] = data[i][j].trim(); }
 							var c = new contact (data[i][0],data[i]);
 							list.addContact(c);
 						}
