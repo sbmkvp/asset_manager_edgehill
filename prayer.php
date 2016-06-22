@@ -26,8 +26,8 @@
 	<body>
 		<nav class = "navbar navbar-inverse navbar-fixed-top" role = "navigation">
 			<div class="navbar-header">
-				<div class = "navbar-brand hidden-xs"><a href="landing.php"><img src="./images/logo.png" class="navbar-image"></a></div>
-				<div class = "navbar-brand brand-center visible-xs"><a href="landing.php"><img src="./images/logo.png" class="navbar-image"></a></div>
+				<div class = "navbar-brand hidden-xs"><a href="landing.php"><img src="./images/logo.png" class="navbar-image"></a>edgehill prayer</div>
+				<div class = "navbar-brand brand-center visible-xs"><a href="landing.php"><img src="./images/logo.png" class="navbar-image"></a>edgehill prayer</div>
 			</div>
 		</nav>
 		<div id="cbox" style="display:none">

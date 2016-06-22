@@ -30,16 +30,16 @@
 			</div>
 		</nav>
 		<div class="container" style="text-align:center">
-			<img src="./images/ehlogo.jpg" style="margin-top:75px;height:150px;"></img>
+			<img src="./images/ehlogo.jpg" style="margin-top:50px;height:150px;"></img>
 		</div>
 		<div class="container">
-			<div class="row" style="margin-top:20px">
+			<div class="row" style="margin-top:0px">
 				<div class="col-xs-2"></div>
 				<a class="col-xs-4 bbox" href="people.php">People</a>
 				<a class="col-xs-4 bbox" href="kit.php">Kit</a>
 				<div class="col-xs-2"></div>
 			</div>
-			<div class="row" style="margin-top:10px">
+			<div class="row" style="margin-top:0px">
 				<div class="col-xs-2"></div>
 				<a class="col-xs-4 bbox" href="prayer.php">Prayer</a>
 				<a class="col-xs-4 bbox" href="<?php echo(file_get_contents("data/feed")); ?>">Feedback</a>
@@ -49,7 +49,7 @@
 				<div class="col-xs-2"></div>
 				<div class="col-xs-8">
 					<ul class="list-group">
-						<li class="list-group-item" style="text-align:center"><b>First Aiders</b></li>
+						<li class="list-group-item" style="text-align:center;color:#ffffff;background:#27AE60"><b>First Aiders</b></li>
 						<?php
 							$string = '';
 							$text = file_get_contents("data/fa");
@@ -67,7 +67,7 @@
 			</div>
 		</div>
 		<div class="container" style="text-align:center">
-			<button type="button" id="logout" class="btn btn-warning" style="margin-top:5px" onclick="$.post('./scripts/logout.php',function(){window.location.reload();})">Logout</button>
+			<button type="button" id="logout" class="btn btn-warning" style="margin-top:5px;margin-bottom:50px;" onclick="$.post('./scripts/logout.php',function(){window.location.reload();})">Logout</button>
 		</div>
 		<script> (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-79522253-1', 'auto'); ga('send', 'pageview'); </script>
 	</body>

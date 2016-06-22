@@ -13,7 +13,7 @@ $(document).ready(function(){
 				$('#inf-wrap').removeClass('alert-info');
 				$('#inf-wrap').removeClass('alert-success');
 				$('#inf-wrap').addClass('alert-warning');
-				$('#inf-text').html('The password seems to be wrong. Please try again. If you have forgotten your password or do not have one contact admin at <a href="mailto:edgehillventure@gmail.com">edgehillventure@gmail.com</a> or <a href="tel:07400906360">07400906360</a>');
+				$('#inf-text').html('Ooops! Forgotten your password? Get in touch with Ed on <a href="mailto:edgehillventure@gmail.com">edgehillventure@gmail.com</a> or <a href="tel:07400906360">07400906360</a>');
 				$('#password').removeClass('wait');
 				$('#goButton').show();
 				console.log(response);		
@@ -34,7 +34,7 @@ $(document).ready(function(){
 					$('#inf-wrap').removeClass('alert-info');
 					$('#inf-wrap').removeClass('alert-success');
 					$('#inf-wrap').addClass('alert-warning');
-					$('#inf-text').html('The password seems to be wrong. Please try again. If you have forgotten your password or do not have one contact admin at <a href="mailto:edgehillventure@gmail.com">edgehillventure@gmail.com</a> or <a href="tel:07400906360">07400906360</a>');
+					$('#inf-text').html('Ooops! Forgotten your password? Get in touch with Ed on <a href="mailto:edgehillventure@gmail.com">edgehillventure@gmail.com</a> or <a href="tel:07400906360">07400906360</a>');
 					$('#password').removeClass('wait');
 					$('#goButton').show();		
 					console.log(response);

@@ -10,7 +10,8 @@ $(document).ready(function(){
 		for ( i in a.contacts) {
 			var name = a.contacts[i].details[1]==undefined ? '' : a.contacts[i].details[1].toLowerCase();
 			var category = a.contacts[i].details[2]==undefined ? '' : a.contacts[i].details[2].toLowerCase();
-			if(name.indexOf(term)>-1 || category===term ) {
+			var usedfor = a.contacts[i].details[6]==undefined ? '' : a.contacts[i].details[6].toLowerCase();
+			if(name.indexOf(term)>-1 || category===term || usedfor.indexOf(term)>-1) {
 				a.contacts[i].listView.show();
 				selectContact(a.contacts[i].id);
 			} else {
@@ -90,12 +91,17 @@ function contactList () {
 			    	data = CSVToArray(data);
 					for (i in data) {
 						if( i!=0 ) {
+							for(j in data[i]){ 
+								if(data[i][j]!=undefined){
+									data[i][j]=data[i][j].trim();
+								}
+							}
 							var c = new contact (data[i][0],data[i]);
 							list.addContact(c);
 						}
 					}
 					selectContact(list.contacts[0].id);
-					$('#contactList').append('<div style="width:80%;font-size:x-small;color:#888;margin:auto;margin-top:25px;text-align:center">If there are any inaccurate or outdated information in this database please contact <a href="mailto:edgehillventure@gmail.com">edgehillventure@gmail.com</a><br><button type="button" id="logout" class="btn btn-warning" style="margin-top:20px">Logout</button></div>');
+					$('#contactList').append('<div style="width:80%;font-size:x-small;color:#888;margin:auto;margin-top:25px;text-align:center"> We keep this info as up to ~ | date as possible, but we’re only human… drop a note to <a href="mailto:edgehillventure@gmail.com">edgehillventure@gmail.com</a> if you spot anything wrong. <br><button type="button" id="logout" class="btn btn-warning" style="margin-top:20px">Logout</button></div>');
 					$('#logout').on('click touch',function(){
 						$.post('./scripts/logout.php',function(){
 							window.location.reload();

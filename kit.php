@@ -26,8 +26,8 @@
 	<nav class = "navbar navbar-inverse navbar-fixed-top" role = "navigation">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="color:#fff"><span class="glyphicon glyphicon-search"></span></button>
-			<div class = "navbar-brand hidden-xs"><a href="landing.php"><img src="./images/logo.png" class="navbar-image"></a><span style="line-height:22px">Kit</span></div>
-			<div class = "navbar-brand brand-center visible-xs"><a href="landing.php"><img src="./images/logo.png" class="navbar-image"></a><span style="line-height:22px">Kit</span></div>
+			<div class = "navbar-brand hidden-xs"><a href="landing.php"><img src="./images/logo.png" class="navbar-image"></a><span style="line-height:22px">edgehill kit</span></div>
+			<div class = "navbar-brand brand-center visible-xs"><a href="landing.php"><img src="./images/logo.png" class="navbar-image"></a><span style="line-height:22px">edgehill kit</span></div>
 		</div>
 		<div class="collapse navbar-collapse">
 			<div class="navbar-form navbar-right"><div class="form-group"><input id="search" type="text" list = "dlist" class="form-control" placeholder="Search" style="margin-right:10px;"></div></div>
