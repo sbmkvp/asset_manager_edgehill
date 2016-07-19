@@ -101,7 +101,7 @@ function contactList () {
 						}
 					}
 					selectContact(list.contacts[0].id);
-					$('#contactList').append('<div style="width:80%;font-size:x-small;color:#888;margin:auto;margin-top:25px;text-align:center"> We keep this info as up to ~ | date as possible, but we’re only human… drop a note to <a href="mailto:edgehillventure@gmail.com">edgehillventure@gmail.com</a> if you spot anything wrong. <br><button type="button" id="logout" class="btn btn-warning" style="margin-top:20px">Logout</button></div>');
+					$('#contactList').append('<div style="width:80%;font-size:x-small;color:#888;margin:auto;margin-top:25px;text-align:center"> We keep this info as up to date as possible, but we’re only human… drop a note to <a href="mailto:edgehillventure@gmail.com">edgehillventure@gmail.com</a> if you spot anything wrong. <br><button type="button" id="logout" class="btn btn-warning" style="margin-top:20px">Logout</button></div>');
 					$('#logout').on('click touch',function(){
 						$.post('./scripts/logout.php',function(){
 							window.location.reload();
@@ -111,6 +111,7 @@ function contactList () {
 					for(i in list.contacts) { 
 						if (datalist.indexOf(list.contacts[i].details[2])<0) { datalist.push(list.contacts[i].details[2]); } 
 						if (datalist.indexOf(list.contacts[i].details[1])<0) { datalist.push(list.contacts[i].details[1]); }
+						if (datalist.indexOf(list.contacts[i].details[6])<0) { datalist.push(list.contacts[i].details[6]); }
 					}
 					for(i in datalist) { $('datalist').append($('<option value="'+datalist[i]+'">')); }
 			    }

@@ -89,7 +89,7 @@ function contactList () {
 			    success: function (data) {
 			    	data = CSVToArray(data);
 					for (i in data) {
-						if(i>0) {
+						if(i>0 && data[i][0]!="" && data[i][0]!=undefined) {
 							for(j in data[i]) { if(data[i][j]!=undefined){ data[i][j] = data[i][j].trim(); } }
 							var c = new contact (data[i][0],data[i]);
 							list.addContact(c);
@@ -110,6 +110,7 @@ function contactList () {
 						}
 						if (datalist.indexOf(list.contacts[i].details[2])<0) { datalist.push(list.contacts[i].details[2]); } 
 						if (datalist.indexOf(list.contacts[i].details[1])<0) { datalist.push(list.contacts[i].details[1]); }
+						if (datalist.indexOf(list.contacts[i].details[4])<0) { datalist.push(list.contacts[i].details[4]); }
 					}
 					for(i in datalist) { $('datalist').append($('<option value="'+datalist[i]+'">')); }
 			    }
@@ -124,11 +125,38 @@ function selectContact(id) {
 			d = a.contacts[i].details;
 		}
 	}
+			$('#title').empty();
+			$('#titlem').empty();
+			var roles = CSVToArray(d[3],":")[0];
+			for(i in roles) {
+				var orgLabel = $('<span>');
+				orgLabel.addClass('badge');
+				orgLabel.css('font-size','smaller');
+				orgLabel.css('font-weight','400');
+				orgLabel.css('margin','2.5px');
+				if(colorScheme[roles[i]]!=undefined) {
+					orgLabel.css('background-color',colorScheme[roles[i]]);
+				}
+				orgLabel.append(roles[i]);
+				$('#title').append(orgLabel);
+			}
+			for(i in roles) {
+				var orgLabel = $('<span>');
+				orgLabel.addClass('badge');
+				orgLabel.css('font-size','smaller');
+				orgLabel.css('font-weight','400');
+				orgLabel.css('margin','2.5px');
+				if(colorScheme[roles[i]]!=undefined) {
+					orgLabel.css('background-color',colorScheme[roles[i]]);
+				}
+				orgLabel.append(roles[i]);
+				$('#titlem').append(orgLabel);
+			}
 
 	$('#photo').css('background-image','url(./photos/people/'+id+'.jpg)');
 	$('#fname').text(d[1]);
 	$('#lname').text(d[2]);
-	$('#title').text(d[3]);
+	// $('#title').text(d[3]);
 	$('#org').text(d[4]);
 	$('#email').html('<a href="mailto:'+d[7]+'">'+d[7]+'</a>');
 	$('#work').html('<a href="tel:'+d[5]+'">'+d[5]+'</a>');
@@ -137,7 +165,7 @@ function selectContact(id) {
 	$('#photom').css('background-image','url(./photos/people/'+id+'.jpg)');
 	$('#fnamem').text(d[1]);
 	$('#lnamem').text(d[2]);
-	$('#titlem').text(d[3]);
+	//$('#titlem').text(d[3]);
 	$('#orgm').text(d[4]);
 	console.log(d[7]);
 	$('#emailm').html('<a href="mailto:'+d[7]+'">'+d[7].substring(0,12)+(d[7].length>12?'...':'')+'</a>');

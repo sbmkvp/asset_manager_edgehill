@@ -46,8 +46,8 @@
 				<div class="col-xs-2"></div>
 			</div>
 			<div class="row" style="margin-top:10px">
-				<div class="col-xs-2"></div>
-				<div class="col-xs-8">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-8">
 					<ul class="list-group">
 						<li class="list-group-item" style="text-align:center;color:#ffffff;background:#27AE60"><b>First Aiders</b></li>
 						<?php
@@ -63,7 +63,7 @@
 						?>
 					</ul>
 				</div>
-				<div class="col-xs-2"></div>
+				<div class="col-sm-2"></div>
 			</div>
 		</div>
 		<div class="container" style="text-align:center">
