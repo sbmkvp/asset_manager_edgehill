@@ -8,9 +8,11 @@ $(document).ready(function(){
 			data = CSVToArray(data);
 			var rand = data[Math.floor(Math.random() * data.length)]
 			$('#prayer').text(rand[0]);
-			$('#source').text(rand[1]);
+			$('#source').text("refresh page for next prayer point");	
 		}
 	});
+	$('#logo1').append('<img src="./images/pm.jpg" style="margin-top:20%;width:90%;">');
+	$('#logo2').append('<a href="http://www.geero.net/prayermate/" >edgehill also has a PrayerMate feed. Sign up here</a>').css('padding','10px');
 });
 
 

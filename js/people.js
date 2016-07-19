@@ -8,7 +8,7 @@ $(document).ready(function(){
 		}
 		var term = $(this).val().toLowerCase();
 		for ( i in a.contacts) {
-			var name = a.contacts[i].details[1].toLowerCase()+' '+a.contacts[i].details[2].toLowerCase();
+			var name = a.contacts[i].details[1]==undefined ? '':a.contacts[i].details[1].toLowerCase()+' '+a.contacts[i].details[2].toLowerCase();
 			var role = a.contacts[i].details[3]==undefined ? '' : CSVToArray(a.contacts[i].details[3].toLowerCase(),":")[0];
 			var room = a.contacts[i].details[4]==undefined ? '' : a.contacts[i].details[4].toLowerCase();
 			if(name.indexOf(term)>-1 || role.indexOf(term)>-1 || room===term ) {
@@ -41,6 +41,10 @@ function contact (id,details) {
 			this.listView.empty();
 			this.listView.append(details[1]+' '+details[2]);
 			var roles = CSVToArray(details[3],":")[0];
+			if(roles.length>1) {
+					  this.listView.css("display","table");
+					  this.listView.css("width","100%");
+			}
 			for(i in roles) {
 				var orgLabel = $('<span>');
 				orgLabel.addClass('badge');
@@ -135,7 +139,8 @@ function selectContact(id) {
 	$('#lnamem').text(d[2]);
 	$('#titlem').text(d[3]);
 	$('#orgm').text(d[4]);
-	$('#emailm').html('<a href="mailto:'+d[7]+'">'+d[7]+'</a>');
+	console.log(d[7]);
+	$('#emailm').html('<a href="mailto:'+d[7]+'">'+d[7].substring(0,12)+(d[7].length>12?'...':'')+'</a>');
 	$('#workm').html('<a href="tel:'+d[5]+'">'+d[5]+'</a>');
 	$('#mobilem').html('<a href="intent://send/'+d[6]+'#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end">'+d[6]+'</a>')
 
