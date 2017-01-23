@@ -14,7 +14,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>edgehill 2016</title>
+		<title>edgehill 2017</title>
 		<meta charset = "UTF-8">
 		<meta name="mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-capable" content="yes">
